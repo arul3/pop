@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 25, 2017, 9:06:57 PM
+    Author     : Vijayakumar
+*/
+.user_area
+{
+    background-color: rgb(214,219,216);
+    width: 600px;
+    height: 60px;
+}
+.avatar
+{
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    float: left;
+}
+.title_area
+{
+    width: 500px;
+    height: 60px;
+    background-color: yellow;
+   
+}
+.title
+{
+   
+    width: 500px;
+    height: 30px;
+    background-color: green;
+}
+.title_msg
+{
+    width: 500px;
+    height: 30px;
+    background-color: rebeccapurple;
+}
+.time_area
+{
+    width: 40px;
+    height: 60px;
+    background-color: red;
+    float:left;
+}

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <link rel="stylesheet" href="msgbox.css">
+        <script src="js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body onload="">
+        <div class="box">
+            <div class="head">
+                <i id="arrow" class="material-icons" style="font-size:36px;color:white;">arrow_back</i>
+                
+                <img src="" width="45px" height="45px" alt="" class="imag">
+                
+                
+                
+               <i id="cam" class="material-icons " style="font-size:38px;color:white;">videocam</i>
+ 
+                <i id="call" class="material-icons" style="font-size:34px;color:white;">call</i>
+                <i id="menu" class="material-icons" style="font-size:36px;color:white;">menu</i>
+            </div>
+            <div class="body" id="msgbody">
+                
+                                                                
+                
+            </div>
+            <div class="textarea">
+                <input class="textinput" type="text" name="texto" value="" maxlength="35" max="">
+                <i class="material-icons" id="moodicon">mood</i>
+                <i class="material-icons" id="addphoto">add_a_photo</i>
+                <i class="material-icons" id="attach">attachment</i>
+                
+                
+                
+                <input type="file" name="postphoto" style="display:none" id="postphoto" onchange="pp(event)">
+                <input type="submit" value="submit">
+            </div>
+            
+              
+        </div>
+        <div class="modal" id="p-upload">
+            <div class="modal-content">
+                 
+                 <img id="preview" class="preview" src=""  alt="preview" >
+                 
+                 <button type="button" class="googlebutton" id="upload-photo"><b>UPLOAD</b></button>
+                 <button type="button" class="googlebutton" id="upload-cancel"><b>CANCEL</b></button>
+                 
+            </div>
+        </div>
+        
+        <div class="modal" id="videochat">
+            
+            <video src="" width="800px" height="600px" alt="video chat" controls> </video>
+             <button class="googlebutton takephoto" id="take">Take photo</button>
+             <button class="googlebutton cancel">Cancel</button>
+             <img id="ph" src="" style="display: none;" alt="photo">
+            
+        </div>        
+        <canvas id="canvas">
+            
+        </canvas>
+        
+        
+        
+        
+ 
+<script>
+   
+            $('addphoto').click(function(){
+                
+                
+            });
+            $('#attach').click(function(){
+                
+            $('#postphoto').click();
+        
+            });
+            $('#upload-photo').click(function(){
+                var formdata = new FormData();
+                var file=document.getElementById('postphoto').files[0];
+                formdata.append("photo",file);
+                var req=new XMLHttpRequest();
+                req.open("POST","postphoto.php",true);
+                req.send(formdata);
+        var newnode = document.createElement("div");  //adding element to message body
+        var div=document.createElement("div");
+        var newnode2=document.createElement("div");
+        var newnode3=document.createElement('div');
+        var oldnode= document.getElementById("msgbody");
+        oldnode.appendChild(div);    
+        div.appendChild(newnode);  //adding Element to message body
+        div.id="apple";                          
+        newnode.setAttribute('class','receive2');
+        newnode.appendChild(newnode2);
+        newnode2.setAttribute('class','postphoto2');
+        newnode2.appendChild(newnode3);
+        newnode3.setAttribute('class','loader');
+        
+        var image=document.createElement('IMG');
+        newnode2.appendChild(image);
+        image.src="";
+
+                req.upload.addEventListener("progress",function(ev){ updateProgress(ev,newnode3,image,file)});
+                 document.getElementById('p-upload').style.display="none";
+        
+        
+            });
+       
+function updateProgress(ev,newnode3,image,file)
+{
+    if(ev.lengthComputable)
+    {
+        var percentage=ev.loaded/ev.total; //while uploading
+        percentage=percentage*100;
+        var p=percentage.toFixed(0); //uploading percentage via XMLrequest
+        if(p>75)
+        {
+            newnode3.style.borderColor="#3498db  #3498db transparent transparent ";
+        }
+        if(p==100)
+        {
+            newnode3.style.borderColor="#3498db  #3498db #3498db #3498db ";
+            
+               var appa=newnode3.parentElement;
+               appa.removeChild(newnode3);
+               var url=URL.createObjectURL(file);
+               image.src=url;
+               image.setAttribute('class','postphoto2');
+            
+        }
+                 
+        
+    }
+}
+       
+       
+      
+  var pp =function(event)
+  {
+      var input=event.target;
+      file=input.files[0];
+      
+      var read=new FileReader();
+      read.onload=function(){
+          
+          var dataURL=read.result;
+          document.getElementById('preview').src=dataURL;
+          document.getElementById('preview').onload=function(){
+          var ix=document.getElementById('preview').naturalWidth;
+          var iy=document.getElementById('preview').naturalHeight;
+          
+          
+          if(ix>600 && iy>400)
+          {
+            
+            iy=(600/ix)*iy;
+              ix=600;
+          $('.preview').width(ix);
+          $('.preview').height(iy);
+              iy=iy+80;
+              ix=ix+30;
+          $('.modal-content').width(ix);
+          $('.modal-content').height(iy);
+          
+         
+          }
+          if(ix>600 && iy<400)
+          {
+                var iy=(600/ix)*iy;
+                ix=600;
+          $('.preview').width(ix);
+          $('.preview').height(iy);
+              iy=iy+80;
+              ix=ix+30;
+          $('.modal-content').width(ix);
+          $('.modal-content').height(iy);
+          
+         
+          }
+          if(iy>400 && ix<600 )
+          {
+              var ix=(400/iy)*ix;
+              iy=400;
+          $('.preview').width(ix);
+          $('.preview').height(iy);
+              iy=iy+80;
+              ix=ix+30;
+          $('.modal-content').width(ix);
+          $('.modal-content').height(iy);
+          
+         
+          }
+          if(iy<400 && ix<600 )
+          {
+              
+          $('.preview').width(ix);
+          $('.preview').height(iy);
+              iy=iy+80;
+              ix=ix+30;
+          $('.modal-content').width(ix);
+          $('.modal-content').height(iy);
+          
+         
+          }
+        }
+          
+      };
+      read.readAsDataURL(file);
+  
+        document.getElementById('p-upload').style.display="block";
+  };
+  
+  window.onclick=function(ev)
+  {
+      
+      var modal=document.getElementById('p-upload');
+      if(ev.target==modal)
+      document.getElementById('p-upload').style.display="none";
+  }
+
+            
+            
+                      
+            
+            
+</script>
+
+        
+       
+        
+        
+        
+        
+        
+    
+ <script>
+       
+//document.getElementById("test").innerHTML=wth;
+
+function loadmsg()
+    {
+        
+        
+    var htp=new XMLHttpRequest();
+
+htp.onreadystatechange=function () {
+
+  if(this.readyState == 4 && this.status == 200)
+  {
+    add2(this);
+ 
+  }
+        
+    }
+    htp.open("GET","oldmsg.php",true);
+    htp.send();
+    
+    
+    
+    };
+ function add2(htp)
+    {
+       
+       xmldoc2=htp.responseXML;
+       
+       x=xmldoc2.getElementsByTagName("msg"); 
+       y=x.length;
+        
+        for(var i=0 ;i<y;i++)
+    
+    {
+        var txt=x[i].childNodes['0'].nodeValue;
+        var newnode = document.createElement("div");
+        var div2=document.createElement("div");
+        var textnode= document.createTextNode(txt);
+        newnode.appendChild(textnode);
+        var oldnode= document.getElementById("msgbody");
+        div2.appendChild(newnode);
+        oldnode.appendChild(div2);
+        
+        
+        var type=x[i].getAttribute("type");
+        if(type=="s")
+        {
+            
+            id="a"+i;
+            newnode.id=id;
+            var e=document.getElementById(id).parentElement;
+            var ele=e.previousElementSibling;
+            if(ele==null)
+            newnode.setAttribute('class','sendtext');
+        
+            else{
+            element=ele.childNodes[0];
+            var c=element.className;
+            
+            if(c=="receive")
+            newnode.setAttribute('class','sendtext');
+                if(c=="receive2")
+                newnode.setAttribute('class','sendtext');
+                if(c=="sendtext")
+                    newnode.setAttribute('class','sendtext2');
+                    if(c=="sentext2")
+                        newnode.setAttribute('class','sendtext2');   
+              
+                
+                
+                
+                
+                
+                }
+                 var w = document.getElementById(id).offsetWidth;
+            w=700-w;    
+            document.getElementById(id).style.left=w+"px";
+            
+                
+        }  
+        else{
+            id="a"+i;
+            newnode.id=id;
+            var e=document.getElementById(id).parentElement;
+            var ele=e.previousElementSibling;
+            if(ele==null)
+            {
+                newnode.setAttribute('class','receive');
+            }
+            else{
+            element=ele.childNodes[0];
+            var c=element.className;
+            
+            if(c=="receive")
+            newnode.setAttribute('class','receive2');
+                if(c=="receive2")
+                newnode.setAttribute('class','receive2');
+                if(c=="sendtext")
+                    newnode.setAttribute('class','receive');
+                    if(c=="sentext2")
+                        newnode.setAttribute('class','receive');
+            
+                }
+            
+            }  
+        }
+    
+};
+</script>
+
+
+<script>
+    
+    $('#cam').click(function(){
+       
+        var constraints = { audio: true , video: true};
+        
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream){
+            
+            var canvas=document.getElementById('canvas');
+            
+            var video=document.querySelector('video');
+            video.srcObject=mediastream;
+            video.onloadedmetadata=function(e){ video.play();
+            
+                                                        
+                                             }
+             video.addEventListener('canplay',function(event){   
+                                                    
+                                                               var width=600;
+                                                               var height=video.videoHeight/(video.videoWidth/width);
+                                                                                                
+                                                               video.setAttribute('width',width);
+                                                               video.setAttribute('height',height);
+                                                               canvas.setAttribute('width',width);
+                                                               canvas.setAttribute('height',height);
+                                                               },false);
+                                              
+            
+            
+        }).catch (function(err){
+            
+            console.log(err.name+""+err.message);
+        });
+
+        
+        
+        
+    });
+    
+    
+    $('#cam').click(function(){
+        
+        
+        $('#videochat').css("display","block");
+        
+        
+    });
+    
+    $('#take').click(function(){
+        canvas = document.getElementById('canvas');
+        video = document.querySelector('video');
+        photo = document.getElementById('ph');
+        video.style.display="none";
+        
+        var context=canvas.getContext('2d');
+        width=600;
+        height=video.videoHeight/(video.videoWidth/width);
+        canvas.width=width;
+        canvas.height=height;
+        context.drawImage(video,0,0,width,height);
+        var data=canvas.toDataURL('image/png');
+        photo.setAttribute('src',data);
+        $('#ph').width(width);
+        $('#ph').height(height);
+        $('#ph').css("display","block");
+       
+        
+    });
+    
+    
+    </script>
+
+
+
+        
+        
+        
+ </body>
+
+</html>

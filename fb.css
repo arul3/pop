@@ -1,0 +1,64 @@
+*:first-letter{
+     text-transform: capitalize;
+}
+body{
+     font-family: tahoma,monoscope;
+      padding: 0px;
+     margin: 0px;
+
+}
+#logoimg{
+     text-decoration: none;
+     color: white;
+     float: left;
+     font-size: 45px;
+     width: 150px;
+     padding-left: 100px;
+     padding-top: 20px;
+     padding-bottom:7px;
+     font-weight: bold;
+     font-family: tahoma,monospace;
+     text-transform: lowercase;
+
+}
+#logo{
+     background-color:#3b5998;
+     overflow: hidden;
+     color: white;
+
+}
+
+#mail{
+     float: left;
+     margin-left:550px;
+     margin-right: 25px;
+     font-size: 12px;
+
+}
+#pss{
+     float: left;
+     margin-right:10px;
+      font-size: 12px;
+}
+#usrnam,#psswrd{
+     margin-top:7px;
+}
+.login{
+     margin-top:10px;
+}
+
+}
+input[name="submit"]
+{
+     background-color:#3b5998;
+     color:white;
+     border-color:#3b5998;
+
+}
+.form-signup{
+          position: absolute;
+          top: 200px;
+          left:900px;
+
+
+}

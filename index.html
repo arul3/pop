@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery-3.2.1.min.js">
+</script>
+    </head>
+    <body onload="loadmsg()">
+        <div id="01" >
+            
+        </div>
+        <input id="t1" type="text" value="" >
+        <button id="s1" type="button">send</button>
+        
+    </body>
+    <script>
+        $("#s1").click(function(){
+            
+          var t1= $("#t1").val();
+          $("#t1").val("");
+          
+          $.post("post.php" ,{ mssg:t1 });
+          
+        });
+        
+        
+        
+        
+        
+        var int=setInterval(load,450);
+ function load()
+ {
+            var xhttp=new XMLHttpRequest();
+
+xhttp.onreadystatechange=function () {
+
+  if(this.readyState == 4 && this.status == 200)
+  {
+    add(this);
+ 
+  }    
+
+
+}
+
+var str=Math.random();
+xhttp.open("GET","newmsg.php?q="+str,true);
+xhttp.send();
+ }
+function add(xhttp)
+{
+    var xmldoc= xhttp.responseXML;
+     x=xmldoc.getElementsByTagName('msg');
+     y=x.length;
+     
+    for(var i=0 ;i<y;i++)
+    
+    {
+        var txt=x[i].childNodes['0'].nodeValue;
+        var newnode = document.createElement("p");
+        
+        var textnode= document.createTextNode(txt);
+        newnode.appendChild(textnode);
+        var oldnode= document.getElementById("01");
+        oldnode.appendChild(newnode);
+        
+    }
+
+};
+    
+    function loadmsg()
+    {
+        
+        
+    var htp=new XMLHttpRequest();
+
+htp.onreadystatechange=function () {
+
+  if(this.readyState == 4 && this.status == 200)
+  {
+    add2(this);
+ 
+  }
+        
+    }
+    htp.open("GET","oldmsg.php",true);
+    htp.send();
+    
+    
+    
+    }
+    function add2(htp)
+    {
+       
+       xmldoc2=htp.responseXML;
+       
+       x=xmldoc2.getElementsByTagName("msg"); 
+       y=x.length;
+        
+        for(var i=0 ;i<y;i++)
+    
+    {
+        var txt=x[i].childNodes['0'].nodeValue;
+        var newnode = document.createElement("p");
+        
+        var textnode= document.createTextNode(txt);
+        newnode.appendChild(textnode);
+        var oldnode= document.getElementById("01");
+        oldnode.appendChild(newnode);
+        
+    }
+ }
+        
+        
+        </script>
+</html>

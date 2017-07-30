@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+        <link rel="stylesheet" href="css/fontello.css">
+         <link rel="stylesheet" href="css/fontello-codes.css">
+         
+            <link rel="stylesheet" href="keyboard.css">
+            <script src="js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body onload="loading()">
+        <div class="text-feild pack" id="text1">
+            
+            hello  &#xe840;&#xe841;
+        </div>
+        <div class="emoticons" id="emoticons">
+            
+            
+            
+        </div>
+        <div>
+            dkjflsdjf fdhfksdhfk
+        </div>
+        
+          <span class="icon-1"></span>
+          <div class="pack">
+             hello  &#xe840; &#xe841;
+          </div>
+          
+          
+          <textarea id="t-area" class="pack"></textarea>
+        <script>
+            
+            var n="<b>hdjsh</b>";
+            newnode=document.createElement('div');
+              textnode=document.createTextNode(n);
+              oldnode=document.getElementById('text1');
+              newnode.appendChild(textnode);
+              oldnode.appendChild(newnode);
+              newnode.innerHTML=n;
+            
+            
+            function loading()
+            {
+            for(i=59392;i<59452;i++)
+                {
+            
+              var  n=i.toString(16);
+              n="&#x"+n+";";
+              
+              var cont = '<div style="cursor:pointer" class="icons">'+n+'</div>';
+              $('#emoticons').append(cont);
+              
+              
+                
+                }
+                
+                $('.icons').click(function(){
+                   
+                var x=$(this).html();
+                
+                
+                var new_value = $('#t-area').val()+" "+x+" ";
+              
+                $('#t-area').val(new_value);
+                $('#t-area').focus();
+//                var y=document.getElementById('t-area').innerHTML;
+//                document.getElementById('t-area').innerHTML=y+"   "+x;
+//                
+                              });
+                
+                
+            }
+            
+            
+        </script>
+        
+    </body>
+</html> 

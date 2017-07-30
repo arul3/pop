@@ -1,0 +1,312 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23 Jun, 2017, 9:24:44 PM
+    Author     : SUKUMAR S
+*/
+body
+{
+    margin: 0px;
+    overflow: auto;
+}
+.box{
+    height:  700px;
+    width: 720px;
+    border: none;
+    position: static;
+    
+    
+}
+.imag{
+    position: absolute;
+    top:15%;
+    left: 8%;
+    border-radius:50px;
+    display: block;
+    
+    background-color: white;
+}
+.head
+{
+    width: 720px;
+    height: 68px;
+    background-color:#25D366;
+    position:relative;
+    
+    
+   
+}
+#cam{
+    position: absolute;
+    top:25%;
+    left:70%;
+}
+#call
+{
+    position: absolute;
+    top:25%;
+    left:80%;
+    
+}
+#arrow
+{
+    position: absolute;
+    top:25%;
+    left: 0%;
+}
+#menu{
+    position: absolute;
+    top:25%;
+    left:90%;
+    
+}
+
+
+.body
+{
+width: 100%;
+height: 500px;
+background-image: url('img/chatbackground.jpg');
+background-size: 720px 500px;
+margin-top:0px;
+overflow: auto;
+}
+.textarea
+{
+    width: 100%;
+    height:43px;
+    position:static;
+    background-color: black;
+    background-image: url('img/chatbackground.jpg');
+}
+.textarea .textinput
+{
+    display: block;
+    background-color: white;
+    margin-left: 10px;
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-top: 7px;
+    padding-bottom: 9px;
+    padding-right: 30px;
+    font-size: 18px;  
+    
+}
+.receive
+{
+    display: inline-block;
+    position: relative;
+    max-width:600px;
+    top: 10px;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+}
+.receive2
+{
+    display: inline-block;
+    position: relative;
+    max-width:600px;
+    top: 10px;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 4px;
+    
+}
+
+#moodicon
+{
+    position:relative;
+    top: -22px;
+    left: 20px;
+    margin-top: -80px;
+  }
+  
+  #addphoto
+  {
+      position:relative;
+    top: -25px;
+    left: 590px;
+    margin-top: -80px;
+  }
+#attach
+{
+      position:relative;
+    top: -25px;
+    left: 500px;
+    margin-top: -80px;
+    transform: rotate(-135deg);
+  }
+.receive::before
+{
+    position: absolute;
+    left: -8px;
+    top: 0px;
+    content: "";
+    border-width: 5px;
+    border-style: solid;
+    border-color: white white transparent transparent;
+    
+    
+}
+.sendtext
+{
+
+
+    display: inline-block;
+    position: relative;
+    max-width:600px;
+    top: 10px;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 18px;
+    background-color: #E1FFC7;
+    border-radius: 4px;
+    border-top-right-radius: 0px;
+    
+    
+    
+ }
+.sendtext::before
+{
+    position: absolute;
+    
+    top: 0px;
+    right:-9px;
+    content: "";
+    border-width: 5px;
+    border-style: solid;
+    border-color:  #E1FFC7 transparent transparent #E1FFC7;    
+    
+}    
+.sendtext2
+{
+
+
+    display: inline-block;
+    position: relative;
+    max-width:600px;
+    top: 10px;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 18px;
+    background-color: #E1FFC7;
+    border-radius: 4px;
+   
+    
+}
+.postphoto
+{
+    display: none;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    background-color: red;
+    border: none;
+
+}
+.postphoto2
+{  
+    display: inline-block;
+    width: 580px;
+    height: 380px;
+    background-color: rgb(200,200,200);
+    border: none;
+    position: static;
+    
+}
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    
+    position: relative;
+    left: 46%;
+    top: 46%;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position:fixed; /* Stay in place */
+     /* Sit on top */
+    left:0;
+    top: 0;
+    z-index: 2;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content
+{
+    position: relative;
+    top: 10%;
+    left: 10%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+.preview
+{
+    margin: 15px;
+    border: 2px solid #3b5998;
+}
+.googlebutton
+{
+    
+ background-color: rgb(66,133,244);
+padding: 8px;
+border: none;
+border-radius: 4px;
+color: white;
+letter-spacing: 1px;
+
+}
+#upload-cancel
+{
+    position: relative;
+    left: 50%;
+}
+.takephoto{
+    position:absolute;
+    top: 700px;
+    
+}
+.cancel
+{
+    top: 700px;
+    left: 200px;
+}

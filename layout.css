@@ -1,0 +1,21 @@
+body{
+    margin:0px;
+}
+#mainbody
+{
+   margin-top:60px;
+   margin-left: 300px;
+    width:400px;
+    height:400px;
+    background: rgb(225,225,240);
+}
+.msgleft{
+    
+    
+  
+}
+.msgright
+{
+  text-align: right;
+
+}
