@@ -10,6 +10,7 @@ if($con->connect_error) die($con->connect_error);
 function queryrun($q)
 {
 
+
 global $con;
 $result=$con->query($q);
 if (!$result) die($con->error);
