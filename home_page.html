@@ -10,8 +10,10 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <link rel="stylesheet" href="home_page.css">
         <link rel="stylesheet" href="jcss.css">
-        <link rel="stylesheet" href="test.css">
+        <link rel="stylesheet" href="arul.css">
+        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -21,7 +23,7 @@ and open the template in the editor.
     <body>
         <div class="left_panel">
             <div class="header">
-                <img src="logo.jpg" class="avatar_small">
+                <img src="logo.jpg" class="avatar">
                 
                 <i class="material-icons chat_icon" >chat</i>
                 <i class="material-icons menu">more_vert</i>
@@ -63,6 +65,18 @@ and open the template in the editor.
             </div>
             
         </div>
+                
+        <div class="menu_list">
+            <div>
+                profile
+            </div>
+            <div>
+                Setting
+            </div>
+            <div>
+                Logout
+            </div>
+        </div>
         
         
         <div class="full_background" id="modal">
@@ -71,11 +85,82 @@ and open the template in the editor.
             </div>
             
         </div>
-        <iframe src="msgbox.html" class="iframe" scrolling="no">
+        <iframe src="msgbox.html" class="iframe" scrolling="no" id="frame">
         
         </iframe>
         
         
+
+	
+<div id="page_body">
+	
+<div id="pg_title_bar">
+	
+    <div id="arrow"></div>
+    <div id="profile_tit">Profile</div>
+
+</div>
+
+<div id="pg_detils">
+
+	<div id="profile_img">
+   
+  <div id="profile_img_hover"></div>
+
+  </div>
+
+	
+		<div id="profile_img_list">
+    
+    <div id="some_thing_1">Yoga</div>
+    <div id="some_thing_2">Arul</div>
+    <div id="some_thing_3">Sakthi</div>
+    <div id="some_thing_4">Vijay</div>
+
+    </div>
+	
+
+	<div id="your_name">
+		
+	<div id="input_div">
+            <input type="text" name="name" placeholder="Your name" id="name_input">
+	<div id="y_name">Your name</div>
+	</div>
+	<div id="pen_box">
+		
+	<div id="smile"></div>
+
+	</div>
+	<div id="pen_link">
+		<div id="pen_link_2"></div>
+	</div>
+
+	</div>
+
+
+  <div id="text_contant">
+    
+  <p> This is not your username or pin. This name will be visible to your WhatsAapp contacts.</p>
+
+	
+</div>
+
+<div id="foot_bar">
+  
+<div id="foot_bar_tit">About and phone number</div>
+<div id="user_name">yoga</div>
+<div id="mobile_number">9087784093</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
         <script src="js/event_handler.js"></script>
-    </body>
+        <script src="js/profile.js"></script>
+</body>
 </html>

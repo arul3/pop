@@ -44,13 +44,28 @@
               
         </div>
         <div class="modal" id="p-upload">
+            <div class="bar bar1"> </div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
             <div class="modal-content">
                  
-                 <img id="preview" class="preview" src=""  alt="preview" >
+                      <img id="preview" class="preview" src=""  alt="preview" draggable="true">
                  
+                  
+                      
+                 <div class="select_layer layer1"> </div>
+                 <div class="select_layer layer2"> </div>
+                 <div class="select_layer layer3"> </div>
+                 <div class="select_layer layer4"> </div>
+
+
+                 <div class="modal-content-footer">
+                     <i class="material-icons icon1" style="font-size:36px; color: rgb(100,100,100);">zoom_in</i>
+                     <i class="material-icons icon2" style="font-size:36px; color: rgb(100,100,100);">zoom_out</i>
                  <button type="button" class="googlebutton" id="upload-photo"><b>UPLOAD</b></button>
                  <button type="button" class="googlebutton" id="upload-cancel"><b>CANCEL</b></button>
-                 
+                 </div>
             </div>
         </div>
         
@@ -66,171 +81,14 @@
             
         </canvas>
         
-        
+        <div id="ttr"></div>
         
         
  
-<script>
+<script src="js/img_upload.js">
    
-            $('addphoto').click(function(){
-                
-                
-            });
-            $('#attach').click(function(){
-                
-            $('#postphoto').click();
-        
-            });
-            $('#upload-photo').click(function(){
-                var formdata = new FormData();
-                var file=document.getElementById('postphoto').files[0];
-                formdata.append("photo",file);
-                var req=new XMLHttpRequest();
-                req.open("POST","postphoto.php",true);
-                req.send(formdata);
-        var newnode = document.createElement("div");  //adding element to message body
-        var div=document.createElement("div");
-        var newnode2=document.createElement("div");
-        var newnode3=document.createElement('div');
-        var oldnode= document.getElementById("msgbody");
-        oldnode.appendChild(div);    
-        div.appendChild(newnode);  //adding Element to message body
-        div.id="apple";                          
-        newnode.setAttribute('class','receive2');
-        newnode.appendChild(newnode2);
-        newnode2.setAttribute('class','postphoto2');
-        newnode2.appendChild(newnode3);
-        newnode3.setAttribute('class','loader');
-        
-        var image=document.createElement('IMG');
-        newnode2.appendChild(image);
-        image.src="";
-
-                req.upload.addEventListener("progress",function(ev){ updateProgress(ev,newnode3,image,file)});
-                 document.getElementById('p-upload').style.display="none";
-        
-        
-            });
-       
-function updateProgress(ev,newnode3,image,file)
-{
-    if(ev.lengthComputable)
-    {
-        var percentage=ev.loaded/ev.total; //while uploading
-        percentage=percentage*100;
-        var p=percentage.toFixed(0); //uploading percentage via XMLrequest
-        if(p>75)
-        {
-            newnode3.style.borderColor="#3498db  #3498db transparent transparent ";
-        }
-        if(p==100)
-        {
-            newnode3.style.borderColor="#3498db  #3498db #3498db #3498db ";
-            
-               var appa=newnode3.parentElement;
-               appa.removeChild(newnode3);
-               var url=URL.createObjectURL(file);
-               image.src=url;
-               image.setAttribute('class','postphoto2');
-            
-        }
-                 
-        
-    }
-}
-       
-       
-      
-  var pp =function(event)
-  {
-      var input=event.target;
-      file=input.files[0];
-      
-      var read=new FileReader();
-      read.onload=function(){
-          
-          var dataURL=read.result;
-          document.getElementById('preview').src=dataURL;
-          document.getElementById('preview').onload=function(){
-          var ix=document.getElementById('preview').naturalWidth;
-          var iy=document.getElementById('preview').naturalHeight;
-          
-          
-          if(ix>600 && iy>400)
-          {
-            
-            iy=(600/ix)*iy;
-              ix=600;
-          $('.preview').width(ix);
-          $('.preview').height(iy);
-              iy=iy+80;
-              ix=ix+30;
-          $('.modal-content').width(ix);
-          $('.modal-content').height(iy);
-          
-         
-          }
-          if(ix>600 && iy<400)
-          {
-                var iy=(600/ix)*iy;
-                ix=600;
-          $('.preview').width(ix);
-          $('.preview').height(iy);
-              iy=iy+80;
-              ix=ix+30;
-          $('.modal-content').width(ix);
-          $('.modal-content').height(iy);
-          
-         
-          }
-          if(iy>400 && ix<600 )
-          {
-              var ix=(400/iy)*ix;
-              iy=400;
-          $('.preview').width(ix);
-          $('.preview').height(iy);
-              iy=iy+80;
-              ix=ix+30;
-          $('.modal-content').width(ix);
-          $('.modal-content').height(iy);
-          
-         
-          }
-          if(iy<400 && ix<600 )
-          {
-              
-          $('.preview').width(ix);
-          $('.preview').height(iy);
-              iy=iy+80;
-              ix=ix+30;
-          $('.modal-content').width(ix);
-          $('.modal-content').height(iy);
-          
-         
-          }
-        }
-          
-      };
-      read.readAsDataURL(file);
-  
-        document.getElementById('p-upload').style.display="block";
-  };
-  
-  window.onclick=function(ev)
-  {
-      
-      var modal=document.getElementById('p-upload');
-      if(ev.target==modal)
-      document.getElementById('p-upload').style.display="none";
-  }
-
-            
-            
-                      
-            
-            
 </script>
-
+<script src="js/drag.js">   </script>
         
        
         
@@ -241,7 +99,7 @@ function updateProgress(ev,newnode3,image,file)
     
  <script>
        
-//document.getElementById("test").innerHTML=wth;
+
 
 function loadmsg()
     {

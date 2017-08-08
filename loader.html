@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <canvas height="220" width="220" id="mycanvas" style="border:1px solid aqua"></canvas>
+        
+        <script>
+var canvas = document.getElementById("mycanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.arc(50,50,6,0,2*Math.PI);
+ctx.fillStyle="blue";
+ctx.fill();
+
+
+ctx.beginPath();
+ctx.arc(64,50,6,0,2*Math.PI);
+ctx.fillStyle="yellow";
+ctx.fill();
+
+
+ctx.beginPath();
+ctx.arc(78,50,6,0,2*Math.PI);
+ctx.fillStyle="green";
+ctx.fill();
+
+</script>
+<script>
+var myGameArea={
+        canvas:document.getElementById('mycanvas'),
+        start:function(){ this.context= this.canvas.getContext('2d');
+        
+        this.interval=setInterval(updateGame,20);
+    
+        },
+        clear:function(){  this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+
+                         }
+}
+function updateGame()
+{
+    myGameArea.clear();
+}
+
+function component(x,y,r,color)
+{
+    this.x=x;
+    this.y=y;
+    this.r=r;
+    this.color=color;
+    draw = function ()
+        {
+        
+        ctx=myGameArea.context;
+        
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,6,0,2*Math.PI);
+        ctx.fillStyle="blue";
+        ctx.fill();
+
+        
+        }
+    
+    
+}
+
+
+</script>
+    </body>
+</html>

@@ -40,3 +40,14 @@ window.onclick = function(event) {
     }
 
 };
+$('.title').click(function(){
+    
+    $('#frame').css({"display":"block"});
+    
+    
+});
+$('.menu').click(function(){
+    $('.menu_list').css("display","block");
+   $('.menu_list').animate({"width":"120px","height":"200"},400); 
+});
+

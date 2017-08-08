@@ -277,12 +277,13 @@ overflow: auto;
     left: 10%;
     background-color: white;
     border: none;
-    border-radius: 5px;
 }
 .preview
 {
-    margin: 15px;
+   
     border: 2px solid #3b5998;
+    position: relative;
+    cursor: crosshair;
 }
 .googlebutton
 {
@@ -294,12 +295,20 @@ border-radius: 4px;
 color: white;
 letter-spacing: 1px;
 
+
 }
 #upload-cancel
 {
-    position: relative;
-    left: 50%;
+   position: relative;
+   left: 300px;
 }
+
+#upload-photo
+{
+    position: relative;
+    left: 150px;
+}
+
 .takephoto{
     position:absolute;
     top: 700px;
@@ -309,4 +318,114 @@ letter-spacing: 1px;
 {
     top: 700px;
     left: 200px;
+}
+
+.modal-content-footer
+{
+    position: absolute;
+    top: 500px
+}
+
+.modal-content-footer >.icon1 
+{
+    position: relative;
+    left: 680px;
+    top: 10px;
+}
+.modal-content-footer > .icon2
+{
+    position: relative;
+    top: 10px;
+    left: 550px;
+}
+    
+
+
+
+.select_box
+{
+width: 300px;
+height:300px;
+
+background-color: transparent;
+border-bottom-width:30px;
+border-bottom-color: rgba(200,200,200,0.6);
+
+border: 10px solid rgba(200,200,200,0.6);
+
+position: absolute;
+
+top: 15px;
+left: 15px;
+
+
+}
+.select_layer
+{
+    position: absolute;
+    background-color: rgba(200,200,200,0.3);
+}
+.layer1
+{
+    top: 0px;
+    left: 0px;
+    width: 750px;
+    height: 100px;
+}
+.layer2
+{
+    left: 0px;
+    top: 100px;
+    width: 225px;
+    height: 300px;
+}
+.layer3
+{
+    right: 0px;
+    top: 100px;
+    width: 225px;
+    height: 300px;
+    
+}
+.layer4
+{
+    
+   bottom: 0px;
+    left: 0px;
+    width: 750px;
+    height: 60px;
+}
+.bar
+{
+    position:absolute;
+    
+    background-color: white;
+    z-index: 2;
+    
+}
+.bar1
+{
+  
+    width: 133px;
+    height: 616px;
+  
+      
+}
+.bar2
+{
+    width: 1331px;
+    height: 66px;
+}
+.bar3
+{
+    width:449px;
+    height: 616px;
+    right: 0px;
+}
+.bar4
+{
+    width: 1400px;
+    height: 30px;
+    bottom: -102px;
+    display: none;
 }
