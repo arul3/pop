@@ -8,15 +8,26 @@ if (!$link) {
     exit;
 }
 
-$sql="INSERT INTO usermsg (sender,msg) VALUES ('234','hi hello viking')";
+//$sql="INSERT INTO usermsg (sender,msg) VALUES ('234','hi hello viking')";
 
-        $res=mysqli_query($link, $sql);
-            if (!$res)
+  //      $res=mysqli_query($link, $sql);
+    //        if (!$res)
                 
-                { 
-                die('query error');
+      //          { 
+              //  die('query error');
             
-                }
+        //        }
+$sql="CREATE PROCEDURE ex(IN str TEXT) BEGIN SET @qry=str; PREPARE state FROM @qry; EXECUTE state; DEALLOCATE PREPARE state; END;";
+
+
+$sql4="CREATE TABLE user_message (sender_id INT,group_id INT NULL,message TEXT,".
+                            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,status INT(3))";
+                                        
+                                        
+        $res2=mysqli_query($link, $sql4);
+                
+                                        if(!$res2){echo 'FFF'.mysqli_error($link); }
+                    
 
 
 mysqli_close($link);

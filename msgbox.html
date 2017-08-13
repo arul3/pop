@@ -14,34 +14,34 @@
         <div class="box">
             <div class="head">
                 <i id="arrow" class="material-icons" style="font-size:36px;color:white;">arrow_back</i>
-                
+
                 <img src="" width="45px" height="45px" alt="" class="imag">
-                
-                
-                
-               <i id="cam" class="material-icons " style="font-size:38px;color:white;">videocam</i>
- 
+
+
+
+                <i id="cam" class="material-icons " style="font-size:38px;color:white;">videocam</i>
+
                 <i id="call" class="material-icons" style="font-size:34px;color:white;">call</i>
                 <i id="menu" class="material-icons" style="font-size:36px;color:white;">menu</i>
             </div>
             <div class="body" id="msgbody">
-                
-                                                                
-                
+
+
+
             </div>
             <div class="textarea">
                 <input class="textinput" type="text" name="texto" value="" maxlength="35" max="">
                 <i class="material-icons" id="moodicon">mood</i>
                 <i class="material-icons" id="addphoto">add_a_photo</i>
                 <i class="material-icons" id="attach">attachment</i>
-                
-                
-                
+
+
+
                 <input type="file" name="postphoto" style="display:none" id="postphoto" onchange="pp(event)">
                 <input type="submit" value="submit">
             </div>
-            
-              
+
+
         </div>
         <div class="modal" id="p-upload">
             <div class="bar bar1"> </div>
@@ -49,244 +49,245 @@
             <div class="bar bar3"></div>
             <div class="bar bar4"></div>
             <div class="modal-content">
-                 
-                      <img id="preview" class="preview" src=""  alt="preview" draggable="true">
-                 
-                  
-                      
-                 <div class="select_layer layer1"> </div>
-                 <div class="select_layer layer2"> </div>
-                 <div class="select_layer layer3"> </div>
-                 <div class="select_layer layer4"> </div>
+
+                <img id="preview" class="preview" src=""  alt="preview" draggable="true">
 
 
-                 <div class="modal-content-footer">
-                     <i class="material-icons icon1" style="font-size:36px; color: rgb(100,100,100);">zoom_in</i>
-                     <i class="material-icons icon2" style="font-size:36px; color: rgb(100,100,100);">zoom_out</i>
-                 <button type="button" class="googlebutton" id="upload-photo"><b>UPLOAD</b></button>
-                 <button type="button" class="googlebutton" id="upload-cancel"><b>CANCEL</b></button>
-                 </div>
+
+                <div class="select_layer layer1"> </div>
+                <div class="select_layer layer2"> </div>
+                <div class="select_layer layer3"> </div>
+                <div class="select_layer layer4"> </div>
+
+
+                <div class="modal-content-footer">
+                    <i class="material-icons icon1" style="font-size:36px; color: rgb(100,100,100);">zoom_in</i>
+                    <i class="material-icons icon2" style="font-size:36px; color: rgb(100,100,100);">zoom_out</i>
+                    <button type="button" class="googlebutton" id="upload-photo"><b>UPLOAD</b></button>
+                    <button type="button" class="googlebutton" id="upload-cancel"><b>CANCEL</b></button>
+                </div>
             </div>
         </div>
-        
+
         <div class="modal" id="videochat">
-            
+
             <video src="" width="800px" height="600px" alt="video chat" controls> </video>
-             <button class="googlebutton takephoto" id="take">Take photo</button>
-             <button class="googlebutton cancel">Cancel</button>
-             <img id="ph" src="" style="display: none;" alt="photo">
-            
+            <button class="googlebutton takephoto" id="take">Take photo</button>
+            <button class="googlebutton cancel">Cancel</button>
+            <img id="ph" src="" style="display: none;" alt="photo">
+
         </div>        
         <canvas id="canvas">
-            
+
         </canvas>
-        
+
         <div id="ttr"></div>
-        
-        
- 
-<script src="js/img_upload.js">
-   
-</script>
-<script src="js/drag.js">   </script>
-        
-       
-        
-        
-        
-        
-        
-    
- <script>
-       
 
 
-function loadmsg()
-    {
-        
-        
-    var htp=new XMLHttpRequest();
 
-htp.onreadystatechange=function () {
+        <script src="js/img_upload.js">
 
-  if(this.readyState == 4 && this.status == 200)
-  {
-    add2(this);
- 
-  }
-        
-    }
-    htp.open("GET","oldmsg.php",true);
-    htp.send();
-    
-    
-    
-    };
- function add2(htp)
-    {
-       
-       xmldoc2=htp.responseXML;
-       
-       x=xmldoc2.getElementsByTagName("msg"); 
-       y=x.length;
-        
-        for(var i=0 ;i<y;i++)
-    
-    {
-        var txt=x[i].childNodes['0'].nodeValue;
-        var newnode = document.createElement("div");
-        var div2=document.createElement("div");
-        var textnode= document.createTextNode(txt);
-        newnode.appendChild(textnode);
-        var oldnode= document.getElementById("msgbody");
-        div2.appendChild(newnode);
-        oldnode.appendChild(div2);
-        
-        
-        var type=x[i].getAttribute("type");
-        if(type=="s")
-        {
-            
-            id="a"+i;
-            newnode.id=id;
-            var e=document.getElementById(id).parentElement;
-            var ele=e.previousElementSibling;
-            if(ele==null)
-            newnode.setAttribute('class','sendtext');
-        
-            else{
-            element=ele.childNodes[0];
-            var c=element.className;
-            
-            if(c=="receive")
-            newnode.setAttribute('class','sendtext');
-                if(c=="receive2")
-                newnode.setAttribute('class','sendtext');
-                if(c=="sendtext")
-                    newnode.setAttribute('class','sendtext2');
-                    if(c=="sentext2")
-                        newnode.setAttribute('class','sendtext2');   
-              
-                
-                
-                
-                
-                
-                }
-                 var w = document.getElementById(id).offsetWidth;
-            w=700-w;    
-            document.getElementById(id).style.left=w+"px";
-            
-                
-        }  
-        else{
-            id="a"+i;
-            newnode.id=id;
-            var e=document.getElementById(id).parentElement;
-            var ele=e.previousElementSibling;
-            if(ele==null)
+        </script>
+        <script src="js/drag.js"></script>
+
+
+
+
+
+
+
+
+        <script>
+
+
+
+            function loadmsg()
             {
-                newnode.setAttribute('class','receive');
-            }
-            else{
-            element=ele.childNodes[0];
-            var c=element.className;
-            
-            if(c=="receive")
-            newnode.setAttribute('class','receive2');
-                if(c=="receive2")
-                newnode.setAttribute('class','receive2');
-                if(c=="sendtext")
-                    newnode.setAttribute('class','receive');
-                    if(c=="sentext2")
-                        newnode.setAttribute('class','receive');
-            
+
+
+                var htp = new XMLHttpRequest();
+
+                htp.onreadystatechange = function () {
+
+                    if (this.readyState == 4 && this.status == 200)
+                    {
+                        add2(this);
+
+                    }
+
                 }
-            
-            }  
-        }
-    
-};
-</script>
-
-
-<script>
-    
-    $('#cam').click(function(){
-       
-        var constraints = { audio: true , video: true};
-        
-        navigator.mediaDevices.getUserMedia(constraints).then(function(mediastream){
-            
-            var canvas=document.getElementById('canvas');
-            
-            var video=document.querySelector('video');
-            video.srcObject=mediastream;
-            video.onloadedmetadata=function(e){ video.play();
-            
-                                                        
-                                             }
-             video.addEventListener('canplay',function(event){   
-                                                    
-                                                               var width=600;
-                                                               var height=video.videoHeight/(video.videoWidth/width);
-                                                                                                
-                                                               video.setAttribute('width',width);
-                                                               video.setAttribute('height',height);
-                                                               canvas.setAttribute('width',width);
-                                                               canvas.setAttribute('height',height);
-                                                               },false);
-                                              
-            
-            
-        }).catch (function(err){
-            
-            console.log(err.name+""+err.message);
-        });
-
-        
-        
-        
-    });
-    
-    
-    $('#cam').click(function(){
-        
-        
-        $('#videochat').css("display","block");
-        
-        
-    });
-    
-    $('#take').click(function(){
-        canvas = document.getElementById('canvas');
-        video = document.querySelector('video');
-        photo = document.getElementById('ph');
-        video.style.display="none";
-        
-        var context=canvas.getContext('2d');
-        width=600;
-        height=video.videoHeight/(video.videoWidth/width);
-        canvas.width=width;
-        canvas.height=height;
-        context.drawImage(video,0,0,width,height);
-        var data=canvas.toDataURL('image/png');
-        photo.setAttribute('src',data);
-        $('#ph').width(width);
-        $('#ph').height(height);
-        $('#ph').css("display","block");
-       
-        
-    });
-    
-    
-    </script>
+                htp.open("GET", "oldmsg.php", true);
+                htp.send();
 
 
 
-        
-        
-        
- </body>
+            }
+            ;
+            function add2(htp)
+            {
+
+                xmldoc2 = htp.responseXML;
+
+                x = xmldoc2.getElementsByTagName("msg");
+                y = x.length;
+
+                for (var i = 0; i < y; i++)
+
+                {
+                    var txt = x[i].childNodes['0'].nodeValue;
+                    var newnode = document.createElement("div");
+                    var div2 = document.createElement("div");
+                    var textnode = document.createTextNode(txt);
+                    newnode.appendChild(textnode);
+                    var oldnode = document.getElementById("msgbody");
+                    div2.appendChild(newnode);
+                    oldnode.appendChild(div2);
+
+
+                    var type = x[i].getAttribute("type");
+                    if (type == "s")
+                    {
+
+                        id = "a" + i;
+                        newnode.id = id;
+                        var e = document.getElementById(id).parentElement;
+                        var ele = e.previousElementSibling;
+                        if (ele == null)
+                            newnode.setAttribute('class', 'sendtext');
+
+                        else {
+                            element = ele.childNodes[0];
+                            var c = element.className;
+
+                            if (c == "receive")
+                                newnode.setAttribute('class', 'sendtext');
+                            if (c == "receive2")
+                                newnode.setAttribute('class', 'sendtext');
+                            if (c == "sendtext")
+                                newnode.setAttribute('class', 'sendtext2');
+                            if (c == "sentext2")
+                                newnode.setAttribute('class', 'sendtext2');
+
+
+
+
+
+
+                        }
+                        var w = document.getElementById(id).offsetWidth;
+                        w = 700 - w;
+                        document.getElementById(id).style.left = w + "px";
+
+
+                    } else {
+                        id = "a" + i;
+                        newnode.id = id;
+                        var e = document.getElementById(id).parentElement;
+                        var ele = e.previousElementSibling;
+                        if (ele == null)
+                        {
+                            newnode.setAttribute('class', 'receive');
+                        } else {
+                            element = ele.childNodes[0];
+                            var c = element.className;
+
+                            if (c == "receive")
+                                newnode.setAttribute('class', 'receive2');
+                            if (c == "receive2")
+                                newnode.setAttribute('class', 'receive2');
+                            if (c == "sendtext")
+                                newnode.setAttribute('class', 'receive');
+                            if (c == "sentext2")
+                                newnode.setAttribute('class', 'receive');
+
+                        }
+
+                    }
+                }
+
+            }
+            ;
+        </script>
+
+
+        <script>
+
+            $('#cam').click(function () {
+
+                var constraints = {audio: true, video: true};
+
+                navigator.mediaDevices.getUserMedia(constraints).then(function (mediastream) {
+
+                    var canvas = document.getElementById('canvas');
+
+                    var video = document.querySelector('video');
+                    video.srcObject = mediastream;
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+
+
+                    }
+                    video.addEventListener('canplay', function (event) {
+
+                        var width = 600;
+                        var height = video.videoHeight / (video.videoWidth / width);
+
+                        video.setAttribute('width', width);
+                        video.setAttribute('height', height);
+                        canvas.setAttribute('width', width);
+                        canvas.setAttribute('height', height);
+                    }, false);
+
+
+
+                }).catch(function (err) {
+
+                    console.log(err.name + "" + err.message);
+                });
+
+
+
+
+            });
+
+
+            $('#cam').click(function () {
+
+
+                $('#videochat').css("display", "block");
+
+
+            });
+
+            $('#take').click(function () {
+                canvas = document.getElementById('canvas');
+                video = document.querySelector('video');
+                photo = document.getElementById('ph');
+                video.style.display = "none";
+
+                var context = canvas.getContext('2d');
+                width = 600;
+                height = video.videoHeight / (video.videoWidth / width);
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
+                var data = canvas.toDataURL('image/png');
+                photo.setAttribute('src', data);
+                $('#ph').width(width);
+                $('#ph').height(height);
+                $('#ph').css("display", "block");
+
+
+            });
+
+
+        </script>
+
+
+
+
+
+
+    </body>
 
 </html>
