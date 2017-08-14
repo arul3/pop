@@ -20,8 +20,8 @@ if (!$link) {
 $sql="CREATE PROCEDURE ex(IN str TEXT) BEGIN SET @qry=str; PREPARE state FROM @qry; EXECUTE state; DEALLOCATE PREPARE state; END;";
 
 
-$sql4="CREATE TABLE user_message (sender_id INT,group_id INT NULL,message TEXT,".
-                            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,status INT(3))";
+$sql4="CREATE TABLE 213_210 (no INT, sender_id VARCHAR(10),user_id VARCHAR(10), message TEXT,".
+        "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
                                         
                                         
         $res2=mysqli_query($link, $sql4);

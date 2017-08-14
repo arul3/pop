@@ -5,6 +5,7 @@
 
  */
 $link = mysqli_connect("127.0.0.1", "root", "", "fb2");
+session_start();
 
         if (isset($_POST))
             
@@ -29,28 +30,51 @@ $link = mysqli_connect("127.0.0.1", "root", "", "fb2");
                                      $row = mysqli_fetch_array($res2,MYSQLI_ASSOC);
                                      
                                      $userid=$row['ID'];
-                                     
+                                     $_SESSION['id']=$userid;
                                     $user_group = $userid."_groups";
                                      $user_incoming_message = $userid."_incoming_message";
+                                     $user_chatlist=$userid."_chatlist";
                                         
-                    $sql3="CREATE TABLE $user_group (group_id INT(10))";
+                    $sql3="CREATE TABLE $user_group (group_id VARCHAR(10))";
                     
                     $sql4="CREATE TABLE $user_incoming_message (sender_id INT,group_id INT NULL,message TEXT,".
                             "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,status INT(3))";
                     
                                         
-                                        
-                      $res3 = mysqli_query($link, $sql3);
+                                     
+                    $sql5="CREATE TABLE $user_chatlist".
+                            "(no INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,user_id VARCHAR(10))";
+                    
+                    
+                    
+                    $res3 = mysqli_query($link, $sql3);
                       
                                         if(!$res3){   die('query error'.mysqli_error($link));   }
                                         
                                         
-                      $res4 = mysqli_query($link, $sql4);
+                    $res4 = mysqli_query($link, $sql4);
                       
                                         if(!$res4){   die('query error'.mysqli_error($link));   }
                         
-            
+                    $res5 = mysqli_query($link, $sql5);
+                                                    if(!$res5)   die('query error'.mysqli_error($link));
        
  
-                                     echo $userid."userid";
+                                     
+                                     
+              
                                         }
+                                        
+                                        
+                                        
+              ?>
+
+
+<form name="add user to chat list" action="add_user.php" method="POST">
+    
+    <input type="text" name="add_user">
+    <input type="submit" value="click to chat">
+    
+    
+    
+</form>

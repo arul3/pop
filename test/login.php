@@ -26,10 +26,17 @@
         name  :<input type="text" name="name"  />
         
         <input type="submit" value="sign up" /> 
+        </form>
+        <br>
+        <form action="add_user.php" method="post" >
+            <input type="text"name="add_user" required>
+            <input type="submit" value="add group">
+        </form>
         
         
         
-    </form>
+        
+    
         
 </body>
 </html>
