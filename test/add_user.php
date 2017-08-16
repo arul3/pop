@@ -23,13 +23,16 @@ $sql = "CREATE TABLE $userid".
                             if (!$res)    die("FFF".mysqli_error($link));
 
                             
-$sql2 = "CREATE TRIGGER update_to_incoming"
-        ."AFTER INSERT ON $userid"."_$add_user FOR EACH NEW ROW BEGIN"
+$sql2 = "CREATE TRIGGER update_to_$userid
+        AFTER INSERT ON $userid"."_$add_user FOR EACH ROW BEGIN
+        IF NEW.receiver_id=$userid THEN
+        INSERT INTO $userid"."_incoming_message (sender_id,message,time) VALUES
+        (NEW.sender_id,NEW.message,NEW.time,'101'); END IF;END;";    
         
-        ."IF NEW.receiver_id"
-        ."INSERT INTO $userid"."_incoming_message (sender_id,message,time) VALUES"
-        . "('NEW.')";
-                                                    
+            $res2=mysqli_query($link, $sql2);
+                            
+                            if (!$res2)    die("adding_user".mysqli_error($link));
+
                                         
                                         
             
