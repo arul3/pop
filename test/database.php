@@ -17,7 +17,7 @@ if (!$link) {
               //  die('query error');
             
         //        }
-$sql="CREATE PROCEDURE ex(IN str TEXT) BEGIN SET @qry=str; PREPARE state FROM @qry; EXECUTE state; DEALLOCATE PREPARE state; END;";
+$sql="SHOW TABLES FROM `fb2` LIKE '7_5' "; //table checking exist
 
 
 $sql4="CREATE TRIGGER update_to_incoming
@@ -28,10 +28,16 @@ $sql4="CREATE TRIGGER update_to_incoming
          
                                         
                                         
-        $res2=mysqli_query($link, $sql4);
+        $res2=mysqli_query($link, $sql);
                 
-                                        if(!$res2){echo 'FFF'.mysqli_error($link); }
+                                        if($res2){ myfunction(); }
                     
-
+                                                $row=mysqli_fetch_array($res2,MYSQLI_ASSOC);
+                                                echo $row['Tables_in_fb2 (7_5)'];
 
 mysqli_close($link);
+
+function myfunction()
+{
+    echo 'arulkumar';
+}

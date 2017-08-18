@@ -30,6 +30,7 @@ session_start();
                                      $row = mysqli_fetch_array($res2,MYSQLI_ASSOC);
                                      
                                      $userid=$row['ID'];
+                                    
                                      $_SESSION['id']=$userid;
                                     $user_group = $userid."_groups";
                                      $user_incoming_message = $userid."_incoming_message";
@@ -59,7 +60,7 @@ session_start();
                     $res5 = mysqli_query($link, $sql5);
                                                     if(!$res5)   die('query error'.mysqli_error($link));
        
- 
+                                                    
                                      
                                      
               
