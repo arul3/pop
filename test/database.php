@@ -21,10 +21,14 @@ $sql="SHOW TABLES FROM `fb2` LIKE '7_5' "; //table checking exist
 
 
 $sql4="CREATE TRIGGER update_to_incoming
-        AFTER INSERT ON 1_101 FOR EACH ROW BEGIN
-        IF NEW.receiver_id=1 THEN
+        AFTER INSERT ON 1_101 FOR EACH ROW
+        BEGIN
+        IF NEW.receiver_id=1
+        THEN
         INSERT INTO 1_incoming_message (sender_id,message,time) VALUES
-        (NEW.sender_id,NEW.message,NEW.time,'101'); END IF;END;";
+        (NEW.sender_id,NEW.message,NEW.time,'101'); 
+        
+        END IF;END;";
          
                                         
                                         

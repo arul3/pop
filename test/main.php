@@ -15,9 +15,24 @@ and open the template in the editor.
     <head>
         <title>main test</title>
         <script src="../js/jquery-3.2.1.min.js"></script>
-  
+        <style>
+            .user_element
+            {
+                display: inline-block;
+                white-space: pre;
+            }
+            .chat_box
+            {
+                width: 400px;
+                height: 500px;
+                position: absolute;
+                right: 0px;
+                top: 20px;
+                background-color: lavender;
+            }
+        </style>
     </head>
-    <body>
+    <body >
         
         <input type="button" value="load chat list"  id="bton"/>
     
@@ -27,6 +42,12 @@ and open the template in the editor.
 </div>
     <div>   </div>    
 </div>
+      
+        <div class="chat_box">
+            
+        </div>    
+        
+        
         <script>
             
             
@@ -42,13 +63,10 @@ and open the template in the editor.
                         if(this.status = 200 && this.readyState == 4)
                         {
                             var myObj = JSON.parse(this.responseText);
-                            for(x in myObj)
-                            {
-                             var response = "<div> "+myObj[x].user_id +"<br>"+myObj[x].name+"</div>";
-                             y+=response;
-                            }
-                            var chat="#chat_list";
-                            $(chat).append(y);
+                            
+                            load_chat(myObj);
+                            
+                           
                         }
                     }
                     var r=Math.random(); r=r.toFixed(2);
@@ -57,7 +75,49 @@ and open the template in the editor.
                     var q="r"+r;
                     htp.send(q);
                     
-            }   
+            } 
+function    load_chat(myObj)
+            {
+                var y="";
+                for(x in myObj)
+                            {
+                             var response = "<div><div class='user_element' data-id=' "+myObj[x].user_id +" '>"+myObj[x].name+"</div></div>";
+                             y+=response;
+                            }
+                            $('#chat_list').append(y);
+                            onload();
+            }
+            function onload()
+            {
+            $('.user_element').click(function(){
+               var id = $(this).attr("data-id");
+               msgload(id);
+            });
+            
+    
+            }
+            function msgload(id)
+            {
+                   
+                    var htp = new XMLHttpRequest;
+                    htp.onreadystatechange = function()
+                    {
+                        if(this.status = 200 && this.readyState == 4)
+                        {
+                                    // var myObj = JSON.parse(this.responseText);
+                            
+                           // load_chat(myObj);
+                          $('.chat_box').append(this.responseText);
+                            
+                           
+                        }
+                    }
+                    
+                    htp.open('GET',"msgload.php?x="+id,true);
+                    
+                    htp.send();
+                    
+            }
         </script>
 </body>
 </html>

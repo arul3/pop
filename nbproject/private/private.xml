@@ -3,16 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/fb2/upload_image.php</file>
-            <file>file:/C:/xampp/htdocs/fb2/js/event_handler.js</file>
-            <file>file:/C:/xampp/htdocs/fb2/home_page.html</file>
             <file>file:/C:/xampp/htdocs/fb2/test/logging.php</file>
             <file>file:/C:/xampp/htdocs/fb2/test/main.php</file>
             <file>file:/C:/xampp/htdocs/fb2/test/chat_list.php</file>
-            <file>file:/C:/xampp/htdocs/fb2/js/img_upload.js</file>
-            <file>file:/C:/xampp/htdocs/fb2/test/login.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/oldmsg.php</file>
             <file>file:/C:/xampp/htdocs/fb2/test/add_user.php</file>
             <file>file:/C:/xampp/htdocs/fb2/test/database.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/upload_image.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/newmsg.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/js/event_handler.js</file>
+            <file>file:/C:/xampp/htdocs/fb2/home_page.html</file>
+            <file>file:/C:/xampp/htdocs/fb2/request.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/test/login.php</file>
+            <file>file:/C:/xampp/htdocs/fb2/test/msgload.php</file>
         </group>
     </open-files>
 </project-private>
