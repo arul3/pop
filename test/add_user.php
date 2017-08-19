@@ -21,7 +21,7 @@ session_start();
                                $row= mysqli_fetch_array($res1,MYSQLI_ASSOC);
                                if(!$row) {                     
                                              addChatlist();
-                                             
+                                             mysqli_free_result($res1);
                                            }      
                                    if($row) {   die("operation error"); }
 $sql3 = "CREATE TABLE $userid".
@@ -48,7 +48,7 @@ $sql4 = "CREATE TRIGGER update_to_$userid"."_$add_user
                             
                             if (!$res4)    die("create trigger".mysqli_error($link));
 
-                               
+mysqli_close($link);                         
             
 }
 
@@ -56,11 +56,25 @@ function addChatlist()
 {
     global $link,$userid,$add_user;
     
+   $sql1 = "SELECT * FROM users WHERE ID=$add_user";
+    $res1 = mysqli_query($link, $sql1);
             
-  $sql="INSERT INTO $userid"."_chatlist (user_id) VALUES ('$add_user')";
+    if(!$res1) die("error".mysqli_error ($link));
+    $row = mysqli_fetch_array($res1);
+    if(!$row) die ("invalid operation");
+    if($row) { $ID = $row['ID']; $name = $row['name']; 
+    
+    
+    $sql="INSERT INTO $userid"."_chatlist (user_id,name) VALUES ('$ID','$name')";
     $res = mysqli_query($link, $sql);
             
     if(!$res) die("error".mysqli_error ($link));
+mysqli_free_result($res1);
+    
+    }
+
+            
+  
 }
 ?>
 

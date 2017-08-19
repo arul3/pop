@@ -35,14 +35,20 @@ and open the template in the editor.
     });         
             function chat_list()
             {
+                    var y="";
                     var htp = new XMLHttpRequest;
                     htp.onreadystatechange = function()
                     {
                         if(this.status = 200 && this.readyState == 4)
                         {
-                            var resp=this.responseText;
-                            
-                            $('#chat_list').append(resp);
+                            var myObj = JSON.parse(this.responseText);
+                            for(x in myObj)
+                            {
+                             var response = "<div> "+myObj[x].user_id +"<br>"+myObj[x].name+"</div>";
+                             y+=response;
+                            }
+                            var chat="#chat_list";
+                            $(chat).append(y);
                         }
                     }
                     var r=Math.random(); r=r.toFixed(2);

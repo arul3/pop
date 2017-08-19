@@ -44,7 +44,9 @@ session_start();
                                         
                                      
                     $sql5="CREATE TABLE $user_chatlist".
-                            "(no INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,user_id VARCHAR(10))";
+                            "(no INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,user_id VARCHAR(10),
+                                name VARCHAR(20)
+                            )";
                     
                     
                     
@@ -58,13 +60,13 @@ session_start();
                                         if(!$res4){   die('query error'.mysqli_error($link));   }
                         
                     $res5 = mysqli_query($link, $sql5);
-                                                    if(!$res5)   die('query error'.mysqli_error($link));
+                                                    if(!$res5)   die('SQL5, query error'.mysqli_error($link));
        
                                                     
                                      
-                                     
+mysqli_free_result($res1);
               
-                                        }
+mysqli_close($link);                      }
                                         
                                         
                                         
