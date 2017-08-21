@@ -46,7 +46,7 @@ $sql4 = "CREATE TRIGGER update_to_$userid"."_$add_user
         
             $res4=mysqli_query($link, $sql4);
                             
-                            if (!$res4)    die("create trigger".mysqli_error($link));
+                            if (!$res4)   die("create trigger".mysqli_error($link));
 
 mysqli_close($link);                         
             
