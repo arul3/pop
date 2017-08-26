@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "", "fb2");
+$link = mysqli_connect("sql103.epizy.com", "epiz_20549538", "jlLYrM4R");
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL.";
